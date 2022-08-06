@@ -1,0 +1,63 @@
+---------------------------------------------------
+This section involves Socket.io Projects and stuffs
+---------------------------------------------------
+***** IMP - It can be configured with many langugae including node.js
+Basically Socketio helps in communication between different users having multiple clients connect to the server
+***** IMP  - Socketio helps in eventbased, low-latency and duplex communication which we didn't have on http request. 
+In HTTP we had server to send data to client until the client wants it to. In Web Socket client connects to server
+and it can stay connect as long as possible!
+
+Server can send message to client any time it wants! IT's a seperate protocol from HTTP
+Say we have 4 Clients and We are server ->
+Client1 sends a message to the server (bi directional flow of message, Rn we send client to server message)
+When server get's message, what we really want to do is send the other three Clients this message!
+(Only if all three are connected to the Chat!)
+
+We need npm Socket.io Library to work with this!
+We put this in the end of index.html
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+
+-----------------
+Socket.io events!
+-----------------
+When we are sending and recieve data, what we are actually doing is transmitting events!
+
+        server (emit) -> client (recieve) - countUpdated
+        client (emit) -> server (recieve) - increment
+
+We want to use socket.emit to send event  and socket.io to recieve on client!
+When a new user joins the chat only they shouldn't get the message hence we use broadcast!
+
+Event Acknowledgement, Client will be notified that message has been sent succesfully
+
+//Sever(emit) -> client (reciever) --Acknowledgement sent to server
+//Client(emit) -> server (reciever) --Acknowledgement sent to client
+
+//Well, best use case of Acknowledgement is validation! You don't want foul langugaes we use a module here again
+bad-words we use Profane of bad-words to do it!
+
+We gotta clear the form after we finished inputting something!
+we used setAttribute disabled and then we renabled and also set the queryselector input value to empty, and also added autofocus
+we used something called element to not call queryselector again and again!
+
+We are now using mustache, moment and qs to render our message and stuffs!
+Mustache -> Render templates
+Moment -> Manipulate time and time the message it was sent on the window
+qs -> query
+
+With mustache we can basically render or pass a message to our html and into the server to all the clients
+Very useful to send the message!
+
+There are 4 different functions in out code where we emit, we want to make sure that we reuse the code and hence we comeup with a solution~
+
+_blank in html will change u to new page!
+styles.min.css is a non editable css that looks faster
+
+location.search when we pass query string in div centered-form, It's going to display us the query string we passed.
+
+io.to(room_name).emit - emits an event to everyone in a specific room without sending it to other rooms!
+socket.broadcast.to(room_name).emit - emits an event to everyone in a specific room without sending it to other rooms except the user himself!
+
+
