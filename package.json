@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node source/index.js",
-    "dev": "node source/index.js -e js,json,hbs,html"
+    "dev": "nodemon source/index.js -e js,json,hbs,html"
   },
   "keywords": [],
   "author": "",
