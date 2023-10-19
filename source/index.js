@@ -10,7 +10,7 @@ const app = express()
 const server = http.createServer(app) //Create server ourselves rather than use inbuilt thing to use in the next line
 const io = socketio(server) //If app is passed here directly we get error
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
